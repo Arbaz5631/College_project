@@ -2,6 +2,7 @@ from django.contrib.auth.models import User
 from django.shortcuts import render, redirect
 from django.http import HttpResponseRedirect
 from .forms import CreateUserForm
+from django.contrib.auth.models import Group
 from .models import *
 from django.conf import settings
 from django.core.mail import EmailMessage
@@ -80,6 +81,8 @@ def RegisterForm(request):
 
             if int(get_otp) == UserOTP.objects.filter(user_name=usr).last().otp:
                     usr.is_active=True
+                    group=Group.objects.get(name='User')
+                    usr.groups.add(group)
                     usr.save()
                     messages.success(request, f'Account is created for {usr}')
                     return redirect('/login')
@@ -177,27 +180,6 @@ def RegisterForm(request):
 
 #     else:
 #         return render(request, 'App/LoginForm.html')
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-           
-
-
-
-
-
 
 
 def LoginForm(request):
