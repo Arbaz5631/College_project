@@ -23,9 +23,11 @@
     <li class="nav-item">
       <a class="nav-link" href="/help/">Help</a>
     </li>
+    {% if user.is_authenticated%}
     <li class="nav-item">
       <a class="nav-link" href="#">Your Complaints</a>
     </li>
+    {% endif %}
     
   </ul>
 </div>
