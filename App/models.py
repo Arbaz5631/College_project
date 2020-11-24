@@ -18,7 +18,7 @@ class wantedperson(models.Model):
         return self.person_name 
 class missingperson(models.Model):
     person_name=models.CharField(max_length=200)
-    age=models.IntegerField(max_length=3)
+    age=models.IntegerField()
     missing_date=models.DateField()
     image=models.ImageField(upload_to='app/images',default="")
     def __str__(self):
@@ -93,21 +93,22 @@ class ComplaintRegister(models.Model):
 
     
     complaint_type=models.CharField(max_length=100,choices=CATEGORY)
+    crime_place=models.TextField()
     crime_in_detail=models.TextField(null=True)
     first_name=models.CharField(max_length=100)
     middle_name=models.CharField(max_length=100)
     last_name=models.CharField(max_length=100)
-    gender=models.CharField(choices=gender_category,max_length=100)
     age=models.CharField(max_length=3)
+    gender=models.CharField(max_length=100,choices=gender_category)
     date_of_birth=models.CharField(max_length=200)
     email_id=models.EmailField()
     mobile_no=models.CharField(max_length=10)
-    house_no=models.CharField(max_length=4)
+    house_no=models.CharField(max_length=10)
     permanent_address=models.TextField()
     landmark=models.TextField()
     state=models.CharField(max_length=100,choices=states_category)
     distict_place=models.CharField(max_length=100,choices=distict_place)
-    crime_place=models.TextField()
+    
     def __str__(self):
         return self.first_name+' '+self.last_name
         

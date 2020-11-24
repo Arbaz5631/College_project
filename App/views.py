@@ -34,27 +34,30 @@ def crime_stories(request):
 
 def complaint_form(request):
     if request.method == "POST":
-        complaint_type = request.POST.get('complaint_type', '')
-        crime_in_detail = request.POST.get('crime_in_detail', '')
-        first_name = request.POST.get('first_name', '')
-        middle_name = request.POST.get('middle_name', '')
-        last_name = request.POST.get('last_name', '')
-        gender = request.POST.get('gender', '')
-        age = request.POST.get('age', '')
-        date_of_birth = request.POST.get('date_of_birth', '')
-        email_id = request.POST.get('email_id', '')
-        mobile_no = request.POST.get('mobile_no', '')
-        house_no = request.POST.get('house_no', '')
-        permanent_address = request.POST.get('permanent_address', '')
-        landmark = request.POST.get('landmark', '')
-        state = request.POST.get('state', '')
-        distict_place = request.POST.get('distict_place', '')
-        crime_place = request.POST.get('crime_place', '')
-        info = ComplaintRegister(complaint_type=complaint_type, crime_in_detail=crime_in_detail, first_name=first_name,
-                                 middle_name=middle_name, last_name=last_name, gender=gender, age=age, date_of_birth=date_of_birth,
-                                 email_id=email_id, mobile_no=mobile_no, house_no=house_no, permanent_address=permanent_address,
-                                 landmark=landmark, state=state, distict_place=distict_place, crime_place=crime_place)
+        complaint_type = request.POST.get('complaint_type','')
+        crime_place = request.POST.get('crime_place','')
+        crime_in_detail = request.POST.get('crime_in_detail','')
+        first_name = request.POST.get('first_name','')
+        middle_name = request.POST.get('middle_name','')
+        last_name = request.POST.get('last_name','')
+        age = request.POST.get('age','')
+        gender = request.POST.get('gender','')
+        date_of_birth = request.POST.get('date_of_birth','')
+        email_id = request.POST.get('email_id','')
+        mobile_no = request.POST.get('mobile_no','')
+        house_no = request.POST.get('house_no','')
+        permanent_address = request.POST.get('permanent_address','')
+        landmark = request.POST.get('landmark','')
+        state = request.POST.get('state','')
+        distict_place = request.POST.get('distict_place','')
+        
+        info = ComplaintRegister(complaint_type=complaint_type, crime_place=crime_place, crime_in_detail=crime_in_detail, first_name=first_name,
+                                 middle_name=middle_name, last_name=last_name, age=age, gender=gender, date_of_birth=date_of_birth,email_id=email_id, mobile_no=mobile_no, house_no=house_no,permanent_address=permanent_address,
+                                 landmark=landmark, state=state, distict_place=distict_place)
+        
         info.save()
+        return render(request, 'App/complaint_register.html')
+
     else:
         return render(request, 'App/complaint_register.html')
 
