@@ -1,5 +1,5 @@
 .navs_2{
-    background-color: red;
+    background-color: rgb(107, 104, 104);
 }
 .home__image{
     width:100%;
@@ -30,7 +30,7 @@
     background-color: snow;
     border:3px solid rgb(224, 218, 218);
     width:500px;
-    height:200px;
+    height:250px;
     display: flex;
 }
 .card__image{
@@ -45,9 +45,7 @@
     text-align: center;
     
 }
-.footer{
-   
-}
+
 @media screen and (max-width:700px){
     .row1{
         flex-direction:column;
@@ -56,3 +54,43 @@
     .row2{
         flex-direction: column;
     }
+    .nav-item{
+        color: beige;
+    }
+    
+   .card{
+       position: absolute;
+       left: auto;
+       top: 10px;
+       right: auto;
+   }
+   .box{
+       text-decoration: darkblue;
+       font-family: fantasy,serif;
+   }
+}
+   .mentor{
+    margin:4px 90px; 
+    border-radius:60px;
+    background-color: snow;
+    border:3px solid rgb(224, 218, 218);
+    width:200px;
+    height:220px;
+    display: flex;
+    
+   }
+   .cimage{
+    width:200px;
+    height:200;
+    border-radius:55px;
+ 
+ }
+
+ .mentor_name{
+    margin:-20px 105px; 
+    background-color: snow;   
+    width:200px;
+    height:35px;
+    display: flex;
+    
+   }
