@@ -11,6 +11,7 @@ from django.contrib import messages
 from django.contrib.auth import authenticate, login as dj_login, logout as dj_logout
 import random
 from django.conf import settings
+from django.contrib.auth.decorators import login_required
 # Create your views here.
 
 
@@ -32,8 +33,9 @@ def crime_stories(request):
     crime_stories = crimestories.objects.all()
     return render(request, 'App/crime_stories.html', {'crime_stories': crime_stories})
 
-
+@login_required(login_url='/login')
 def complaint_form(request):
+   
     if request.method == "POST":
         complaint_type = request.POST.get('complaint_type','')
         crime_place = request.POST.get('crime_place','')
@@ -60,6 +62,7 @@ def complaint_form(request):
         return render(request, 'App/complaint_register.html')
 
     else:
+        
         return render(request, 'App/complaint_register.html')
 
 
@@ -124,6 +127,7 @@ def RegisterForm(request):
         return render(request, 'App/register.html',{'form': form,'error_message': 'Incorrect username and password.'})
 
     else:
+        
         return render(request, 'App/register.html', {'form': form})
 
 
@@ -184,12 +188,19 @@ def RegisterForm(request):
 
 def LoginForm(request):
     if request.method == 'POST':
+       role = request.POST.get("role")
        username = request.POST.get("username")
        password = request.POST.get("password")
        user = authenticate(request, username=username, password=password)
        if user :
-           dj_login(request,user)
-           return redirect('/')
+           if role=="User" and user.groups.filter(name="User").exists():
+             dj_login(request,user)
+             return redirect('/')
+             
+           elif(role=="Admin" and user.groups.filter(name="Admin").exists()):
+               dj_login(request,user)
+               return redirect('/Admin/')
+
        else:
            messages.info(request,'Invalid username and password!')
            return redirect('login')
@@ -199,8 +210,11 @@ def LoginForm(request):
 
 
 
-
-
+@login_required(login_url='/login')
+def Admin(request):
+    
+    crimes=ComplaintRegister.objects.all()
+    return render(request,"App/Admin.html",{"crimes":crimes})
 
 
 def logout(request):

@@ -81,12 +81,11 @@
                 <div class="d-flex justify-content-center">
                     <h3 id="form-title">REGISTER ACCOUNT</h3>
                 </div>
-                <!-- {% for messege in messages%}
-                <p class='text-primary'>{{message}}</p>
-                {% endfor %} -->
+                <!-- <p class='text-primary'>{{messages}}</p><br/> -->
                 <p class='text-primary'>{{error_message}}</p>
                 <div class="d-flex justify-content-center form_container">
                     {% if otp %}
+                    
                     <form method="POST" action='/app/register/'>{% csrf_token %}
                         <input type="hidden" name="usr" value="{{usr.username}}">
                         <label for="otp">otp</label>

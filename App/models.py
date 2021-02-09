@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 
+
 class UserOTP(models.Model):
      user_name=models.ForeignKey(User,on_delete=models.CASCADE)
      time_st=models.DateTimeField(auto_now=True)
@@ -90,8 +91,7 @@ class ComplaintRegister(models.Model):
     ('South West Delhi','South West Delhi'),
     ('Bareilly','Bareilly'),
     )
-
-    
+     
     complaint_type=models.CharField(max_length=100,choices=CATEGORY)
     crime_place=models.TextField()
     crime_in_detail=models.TextField(null=True)

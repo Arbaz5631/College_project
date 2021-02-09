@@ -21,7 +21,7 @@
 .crime__div{
     width:100%;
     height:500px;
-    margin-top:1px;
+    margin:50px;
 }
 
 .crime__card{
@@ -95,4 +95,14 @@
     display: flex;
     margin-top: 20px;
     
+   }
+
+   .d-block_w-100{
+      width:1000px;
+      height:400px; 
+     margin: 100px;
+   }
+   .mentor_row{
+       display: flex;
+       flex-direction: row;
    }

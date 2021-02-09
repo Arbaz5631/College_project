@@ -11,7 +11,9 @@ urlpatterns=[
     path("wanted/",views.wanted,name="wanted"),
     path("crime_stories/",views.crime_stories,name="crime_stories"),
     path("help/",views.help,name="help"),
-    path("complaint_form/",views.complaint_form,name="complaint_form")
+    path("complaint_form/",views.complaint_form,name="complaint_form"),
+    path("Admin/",views.Admin,name="Admin")
+
     
 
 ]
